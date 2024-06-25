@@ -1,0 +1,31 @@
+.search-container {
+    max-width: 400px;
+    height: 48px;
+    background-color: rgba(var(--primary-color), 8%);
+    border-radius: 8px;
+    padding: 8px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-container input {
+    border: none;
+    background-color: transparent;
+    outline: none;
+    font-size: 18px;
+    line-height: 28px;
+    color: rgba(var(--primary-color));
+    width: 100%;
+    height: 100%;
+}
+
+.search-container input::placeholder {
+    color: rgba(var(--primary-color), 60%)
+}
+
+.search-container img {
+    width: 32px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
