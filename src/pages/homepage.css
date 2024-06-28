@@ -2,6 +2,7 @@
     width: 100vw;
     height: 100vh;
     display: flex;
+    overflow: auto;
     padding: 32px;
     transition: background 1s ease;
 }
@@ -72,6 +73,7 @@
 @media screen and (max-width:800px) {
     .outer-container {
         padding-inline: 0px;
+        height: auto;
     }
 
     .header-left-section {
