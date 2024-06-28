@@ -7,11 +7,11 @@ import SongProvider from "./context/songProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <SongProvider>
-      <App />
-    </SongProvider>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <SongProvider>
+    <App />
+  </SongProvider>
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

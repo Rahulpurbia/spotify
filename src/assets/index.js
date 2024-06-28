@@ -5,7 +5,8 @@ import PrevBtn from "./prev.svg";
 import SearchIcon from "./search.svg";
 import SpeakerIcon from "./speaker.svg";
 import OptionsIcon from "./three-dots.svg";
-
+import ProfileIcon from "./Profile.png";
+import MenuIcon from "./menu.svg";
 
 export {
   Logo,
@@ -15,4 +16,6 @@ export {
   SearchIcon,
   SpeakerIcon,
   OptionsIcon,
+  ProfileIcon,
+  MenuIcon,
 };

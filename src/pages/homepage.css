@@ -2,5 +2,91 @@
     width: 100vw;
     height: 100vh;
     display: flex;
+    padding: 32px;
+    transition: background 1s ease;
+}
+
+.player-list-container {
+    display: flex;
+    flex: 1;
+    justify-content: space-evenly;
+}
+
+.brand-and-user {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.logo {
+    width: 85%;
+    max-width: 133px;
+    min-width: 100px;
+}
+
+.user-profile {
+    width: 31%;
+    max-width: 48px;
+    min-width: 30px;
+}
+
+.logo img,
+.user-profile img,
+.menu-icon img {
+    width: 100%;
+}
+
+.menu-icon {
+    display: none;
+}
+
+
+@media screen and (max-width:1000px) {
+    .outer-container {
+        flex-direction: column;
+        padding-top: 85px;
+    }
+
+    .brand-and-user {
+        flex-direction: row;
+        height: 65px;
+        width: 100%;
+        top: 0;
+        position: fixed;
+        background: black;
+        left: 0;
+        align-items: center;
+        padding-inline: 20px;
+    }
+
+    .player-list-container {
+        height: 100%;
+    }
+
+    .logo {
+        width: 15%;
+    }
+
+}
+
+@media screen and (max-width:800px) {
+    .outer-container {
+        padding-inline: 0px;
+    }
+
+    .header-left-section {
+        display: flex;
+        gap: 30px;
+        align-items: center;
+    }
+
+    .menu-icon {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        display: inline;
+        width: 32px;
+        cursor: pointer;
+    }
 
 }

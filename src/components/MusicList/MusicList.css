@@ -1,6 +1,7 @@
 .tabs {
     display: flex;
     gap: 40px;
+    margin-bottom: 8px;
 }
 
 .tabs button {
@@ -21,4 +22,65 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.no-music {
+    font-size: 25px;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 20px;
+    color: white;
+}
+
+.list-item-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 30%;
+    min-width: 300px;
+    max-width: 450px;
+}
+
+.music-list {
+    overflow: auto;
+    padding-inline: 10px;
+}
+
+@media screen and (max-width:1200px) {
+    .tabs {
+        gap: 35px;
+    }
+
+    .tabs button {
+        font-size: 22px;
+    }
+
+    .no-music {
+        font-size: 23px;
+    }
+}
+
+@media screen and (max-width:800px) {
+    .list-item-wrapper {
+        position: fixed;
+        left: 0;
+        background: black;
+        top: 65px;
+        padding-top: 10px;
+        overflow: auto;
+        z-index: 234;
+        height: calc(100vh - 65px);
+        transform: translateX(-100%);
+        transition: 200ms ease-in-out;
+    }
+
+    .opened-menu {
+        transform: translateX(0) !important;
+        transition: 200ms ease-in-out;
+    }
+
+    .tabs,
+    .search-wrapper {
+        padding-inline: 10px;
+    }
 }

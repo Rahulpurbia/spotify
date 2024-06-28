@@ -5,6 +5,7 @@ import ListItem from "../../shared/ListItem/ListItem";
 import SearchBar from "../../shared/SearchBar/SearchBar";
 import { SongContext } from "../../context/songContext";
 import Loader from "../Loader/Loader";
+import useDebounce from "../../hooks/useDebounce";
 
 const tabs = {
   forYou: "forYou",
@@ -14,7 +15,11 @@ const tabs = {
 const MusicList = () => {
   const [activeTab, setActiveTab] = useState(tabs.forYou);
   const [isLoading, setIsLoading] = useState(true);
-  const { setSelectedSong, setSongList, songList } = useContext(SongContext);
+  const [searchQuery, setSearchQuery] = useState("");
+  const { setSelectedSong, setSongList, songList, menuOpen, setMenuOpen } =
+    useContext(SongContext);
+  const debouncedSearchQuery = useDebounce(searchQuery, 500);
+  const [filteredMusicList, setFilteredMusicList] = useState([]);
 
   const fetchMusicList = async () => {
     try {
@@ -30,6 +35,7 @@ const MusicList = () => {
 
   const handleSelect = (song) => {
     setSelectedSong(song);
+    setMenuOpen(false);
   };
 
   const getActiveClass = (tabName) => {
@@ -44,8 +50,27 @@ const MusicList = () => {
     fetchMusicList();
   }, []);
 
+  useEffect(() => {
+    let filteredSongs = [];
+    if (activeTab === tabs.forYou) {
+      filteredSongs = [...songList];
+    } else {
+      filteredSongs = songList.filter((song) => song.top_track);
+    }
+    if (searchQuery) {
+      const lowerCaseSearchQuery = searchQuery.toLocaleLowerCase();
+      filteredSongs = filteredSongs.filter((song) => {
+        return (
+          song?.name?.toLowerCase()?.includes(lowerCaseSearchQuery) ||
+          song?.artist?.toLowerCase()?.includes(lowerCaseSearchQuery)
+        );
+      });
+    }
+    setFilteredMusicList(filteredSongs);
+  }, [activeTab, songList, debouncedSearchQuery]);
+
   return (
-    <div>
+    <div className={`list-item-wrapper ${menuOpen ? "opened-menu" : ""}`}>
       <div className="tabs">
         <button
           className={getActiveClass(tabs.forYou)}
@@ -60,14 +85,19 @@ const MusicList = () => {
           Top Tracks
         </button>
       </div>
-      <SearchBar />
+      <div className="search-wrapper">
+        <SearchBar
+          value={searchQuery}
+          handleChange={(value) => setSearchQuery(value)}
+        />
+      </div>
       {isLoading ? (
         <div className="loader-wrapper">
           <Loader />
         </div>
-      ) : (
-        <>
-          {songList.map((song) => {
+      ) : filteredMusicList.length > 0 ? (
+        <div className="music-list">
+          {filteredMusicList.map((song) => {
             return (
               <ListItem
                 key={song.id}
@@ -76,7 +106,9 @@ const MusicList = () => {
               />
             );
           })}
-        </>
+        </div>
+      ) : (
+        <div className="no-music">No Music Found</div>
       )}
     </div>
   );

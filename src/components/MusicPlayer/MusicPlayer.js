@@ -16,12 +16,29 @@ const MusicPlayer = () => {
   const [duration, setDuration] = useState(0);
   const { selectedSong, songList, setSelectedSong } = useContext(SongContext);
   const [isMuted, setIsMuted] = useState(false);
+  const mountCount = useRef(0);
 
   useEffect(() => {
+    if (selectedSong && mountCount.current >= 2) {
+      const audio = audioRef.current;
+      audio.play();
+      setIsPlaying(true);
+    } else {
+      mountCount.current = mountCount.current + 1;
+    }
+  }, [selectedSong]);
+
+  const handlePause = () => {
+    const audio = audioRef.current;
+    audio.pause();
+    setIsPlaying(false);
+  };
+
+  const handlePlay = () => {
     const audio = audioRef.current;
     audio.play();
     setIsPlaying(true);
-  }, [selectedSong]);
+  };
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -29,18 +46,20 @@ const MusicPlayer = () => {
 
     audio.addEventListener("timeupdate", updateTime);
     audio.addEventListener("loadedmetadata", () => setDuration(audio.duration));
+    audio.addEventListener("ended", handlePause);
 
     return () => {
       audio.removeEventListener("timeupdate", updateTime);
       audio.removeEventListener("loadedmetadata", () =>
         setDuration(audio.duration)
       );
+      audio.removeEventListener("ended", handlePause);
     };
   }, []);
 
   const handleNext = () => {
     const currentSongIndex = songList.findIndex(
-      (song) => song.id === selectedSong.id
+      (song) => song?.id === selectedSong?.id
     );
     if (songList.length - 1 > currentSongIndex) {
       setSelectedSong(songList[currentSongIndex + 1]);
@@ -49,7 +68,7 @@ const MusicPlayer = () => {
 
   const handlePrev = () => {
     const currentSongIndex = songList.findIndex(
-      (song) => song.id === selectedSong.id
+      (song) => song?.id === selectedSong?.id
     );
     if (currentSongIndex !== 0) {
       setSelectedSong(songList[currentSongIndex - 1]);
@@ -57,11 +76,10 @@ const MusicPlayer = () => {
   };
 
   const handlePlayPause = () => {
-    const audio = audioRef.current;
     if (isPlaying) {
-      audio.pause();
+      handlePause();
     } else {
-      audio.play();
+      handlePlay();
     }
     setIsPlaying(!isPlaying);
   };

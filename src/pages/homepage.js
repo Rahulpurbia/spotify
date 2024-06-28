@@ -4,9 +4,11 @@ import MusicList from "../components/MusicList/MusicList";
 import "./homepage.css";
 import { SongContext } from "../context/songContext";
 import MusicPlayer from "../components/MusicPlayer/MusicPlayer";
+import { Logo, MenuIcon, ProfileIcon } from "../assets";
 
 const Homepage = () => {
-  const { selectedSong } = useContext(SongContext);
+  const { selectedSong, setMenuOpen } = useContext(SongContext);
+
   return (
     <div
       className="outer-container"
@@ -16,8 +18,28 @@ const Homepage = () => {
         } 0%, #000000 100%)`,
       }}
     >
-      <MusicList />
-      <MusicPlayer />
+      <div className="brand-and-user">
+        <div className="header-left-section">
+          <button
+            className="menu-icon"
+            onClick={() => {
+              setMenuOpen((prev) => !prev);
+            }}
+          >
+            <img src={MenuIcon} alt="menu" />
+          </button>
+          <span className="logo">
+            <img src={Logo} alt="logo" />
+          </span>
+        </div>
+        <span className="user-profile">
+          <img src={ProfileIcon} alt="profile" />
+        </span>
+      </div>
+      <div className="player-list-container">
+        <MusicList />
+        <MusicPlayer />
+      </div>
     </div>
   );
 };

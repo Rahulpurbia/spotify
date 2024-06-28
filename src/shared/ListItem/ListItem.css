@@ -10,14 +10,19 @@
     border-radius: 8px;
 }
 
-.list-item:hover,
+
 .active-song {
     background-color: rgba(var(--primary-color), 8%);
 }
 
+.list-item:hover {
+    background-color: rgba(var(--primary-color), 2%);
+}
+
 
 .list-item-image {
-    width: 48px;
+    max-width: 48px;
+    width: 15%;
     aspect-ratio: 1/1;
     border-radius: 50%;
     overflow: hidden;
@@ -25,8 +30,8 @@
 
 .list-item-image img {
     object-fit: cover;
-    width: 48px;
-    height: 48px;
+    width: 100%;
+    aspect-ratio: 1/1;
 }
 
 .list-item-details {
@@ -57,4 +62,26 @@
     font-size: 18px;
     line-height: 24px;
     color: rgba(var(--primary-color), 60%);
+}
+
+
+
+@media screen and (max-width:1200px) {
+    .list-item {
+        gap: 13px;
+        padding: 13px;
+        height: 70px;
+    }
+
+    .artist-song .song-name {
+        font-size: 16px;
+    }
+
+    .artist-song .artist {
+        font-size: 12px;
+    }
+
+    .song-duration {
+        font-size: 16px;
+    }
 }

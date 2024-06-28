@@ -29,3 +29,14 @@
     aspect-ratio: 1/1;
     object-fit: cover;
 }
+
+@media screen and (max-width:1200px) {
+    .search-container {
+        height: 45px;
+        padding: 8px 16px;
+    }
+
+    .search-container input {
+        font-size: 16px;
+    }
+}

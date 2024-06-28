@@ -149,15 +149,26 @@
     border-radius: 5px;
 }
 
-.volume-control {
-    display: flex;
-    align-items: center;
+@media screen and (max-width:1200px) {
+
+    .song-title {
+        font-size: 30px;
+    }
+
+    .artist {
+        font-size: 14px;
+    }
+
 }
 
-.volume-control i {
-    margin-right: 10px;
-}
 
-.volume-control input {
-    width: 100px;
+@media screen and (max-width:800px) {
+    .audio-player {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .song-info {
+        margin-bottom: 12px;
+    }
 }

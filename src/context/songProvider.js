@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 const SongProvider = ({ children }) => {
   const [selectedSong, setSelectedSong] = useState(null);
   const [songList, setSongList] = useState([]);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     if (songList.length > 0) {
@@ -13,7 +14,14 @@ const SongProvider = ({ children }) => {
 
   return (
     <SongContext.Provider
-      value={{ selectedSong, setSelectedSong, songList, setSongList }}
+      value={{
+        selectedSong,
+        setSelectedSong,
+        songList,
+        setSongList,
+        menuOpen,
+        setMenuOpen,
+      }}
     >
       {children}
     </SongContext.Provider>
