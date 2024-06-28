@@ -73,6 +73,7 @@
 @media screen and (max-width:800px) {
     .outer-container {
         padding-inline: 0px;
+        min-height: 100vh;
         height: auto;
     }
 
