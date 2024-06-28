@@ -1,0 +1,163 @@
+.audio-player {
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    min-width: 300px;
+    max-width: 460px;
+    width: 35%;
+}
+
+.album-art-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.album-art {
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.song-info {
+    margin-bottom: 32px;
+    align-self: flex-start;
+}
+
+.song-title {
+    font-size: 32px;
+    line-height: 36px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.artist {
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(--primary-color, 60%);
+    margin: 0;
+    font-weight: 400;
+}
+
+.controls-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 32px;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.more-options,
+.mute-button {
+    background-color: rgba(var(--primary-color), 10%);
+    width: 12%;
+    max-width: 40px;
+    min-width: 30px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
+    font-size: 25px;
+    color: white;
+    cursor: pointer;
+    position: relative;
+}
+
+.more-options>img,
+.mute-button>img {
+    width: 50%;
+}
+
+.muted::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: center;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 2px;
+    height: 71%;
+    background-color: white;
+    border-radius: 16px;
+}
+
+.control-buttons {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+    flex-grow: 1;
+    align-items: center;
+    padding-inline: 15%;
+}
+
+.prev-btn,
+.next-btn {
+    background: none;
+    border: none;
+    outline: none;
+    width: 16%;
+    cursor: pointer;
+    min-width: 25px;
+    max-width: 32px;
+}
+
+.prev-btn img,
+.next-btn img,
+.play-pause-button img {
+    width: 100%
+}
+
+.next-btn {
+    transform: rotate(180deg)
+}
+
+.play-pause-button {
+    background: none;
+    border: none;
+    width: 26%;
+    max-width: 40px;
+    min-width: 30px;
+    cursor: pointer;
+
+}
+
+.progress-bar {
+    flex-grow: 1;
+    height: 6px;
+    background-color: rgba(var(--primary-color), 20%);
+    border-radius: 16px;
+    width: 100%;
+    cursor: pointer;
+    position: relative;
+}
+
+.progress {
+    height: 100%;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.volume-control {
+    display: flex;
+    align-items: center;
+}
+
+.volume-control i {
+    margin-right: 10px;
+}
+
+.volume-control input {
+    width: 100px;
+}

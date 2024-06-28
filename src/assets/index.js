@@ -6,6 +6,7 @@ import SearchIcon from "./search.svg";
 import SpeakerIcon from "./speaker.svg";
 import OptionsIcon from "./three-dots.svg";
 
+
 export {
   Logo,
   PauseBtn,

@@ -1,0 +1,24 @@
+.tabs {
+    display: flex;
+    gap: 40px;
+}
+
+.tabs button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-weight: 700;
+    font-size: 24px;
+    color: rgba(var(--primary-color), 50%);
+    cursor: pointer;
+}
+
+.tabs button.active {
+    color: rgba(var(--primary-color));
+}
+
+.loader-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

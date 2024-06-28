@@ -1,16 +1,22 @@
 import { SongContext } from "./songContext";
-import { useContext, useState } from "react";
+import { useEffect, useState } from "react";
 
 const SongProvider = ({ children }) => {
-  const [accentColor, setAccentColor] = useState("#055224");
   const [selectedSong, setSelectedSong] = useState(null);
+  const [songList, setSongList] = useState([]);
+
+  useEffect(() => {
+    if (songList.length > 0) {
+      setSelectedSong(songList[0]);
+    }
+  }, [songList]);
 
   return (
     <SongContext.Provider
-      value={{ accentColor, setAccentColor, selectedSong, setSelectedSong }}
+      value={{ selectedSong, setSelectedSong, songList, setSongList }}
     >
       {children}
-  </SongContext.Provider>
+    </SongContext.Provider>
   );
 };
 

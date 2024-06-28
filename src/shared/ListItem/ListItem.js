@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import "./ListItem.css";
 import { SongContext } from "../../context/songContext";
 
-const ListItem = ({ song, handleClick }) => {
+const ListItem = ({ song, handleSelect }) => {
   const { selectedSong } = useContext(SongContext);
 
   return (
@@ -10,12 +10,12 @@ const ListItem = ({ song, handleClick }) => {
       className={`list-item ${
         selectedSong?.name === song.name ? "active-song" : ""
       }`}
-      onClick={handleClick}
+      onClick={handleSelect}
     >
       <span className="list-item-image">
         <img
           src={`https://cms.samespace.com/assets/${
-            song.cover ?? "e714a3b8-9ae0-4417-a2d1-6ece39ad5776"
+            song?.cover ?? "e714a3b8-9ae0-4417-a2d1-6ece39ad5776"
           }`}
         />
       </span>

@@ -1,5 +1,6 @@
 .outer-container {
-    /* background: linear-gradient(90deg, #055224 0%, #000000 100%); */
     width: 100vw;
     height: 100vh;
+    display: flex;
+
 }
